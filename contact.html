@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aanuoluwapo's Portfolio - Contact</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#4169E1', // Royal blue for brighter, royal feel
+                        secondary: '#FFD700', // Gold for accents
+                        neutral: '#F0F8FF', // Brighter neutral (Alice blue)
+                        'text-dark': '#1E3A8A', // Deep blue for text
+                    },
+                    fontFamily: {
+                        serif: ['Playfair Display', 'serif'],
+                        sans: ['Roboto', 'sans-serif'],
+                    },
+                },
+            },
+        };
+    </script>
+</head>
+<body class="bg-neutral font-sans text-text-dark" x-data="{ mobileMenuOpen: false }" @click.outside="mobileMenuOpen = false">
+
+    <!-- Navbar -->
+    <nav class="bg-white shadow-md fixed w-full z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="text-2xl font-serif font-bold text-primary">Capturing Moments</a>
+                </div>
+                <div class="hidden md:flex items-center space-x-6">
+                    <a href="index.html" class="flex items-center text-text-dark hover:text-primary space-x-1">
+                        <i data-lucide="home" class="w-5 h-5"></i>
+                        <span>Home</span>
+                    </a>
+                    <a href="about.html" class="flex items-center text-text-dark hover:text-primary space-x-1">
+                        <i data-lucide="user" class="w-5 h-5"></i>
+                        <span>About</span>
+                    </a>
+                    <a href="portfolio.html" class="flex items-center text-text-dark hover:text-primary space-x-1">
+                        <i data-lucide="image" class="w-5 h-5"></i>
+                        <span>Portfolio</span>
+                    </a>
+                    <a href="services.html" class="flex items-center text-text-dark hover:text-primary space-x-1">
+                        <i data-lucide="settings" class="w-5 h-5"></i>
+                        <span>Services</span>
+                    </a>
+                    <a href="contact.html" class="flex items-center text-text-dark hover:text-primary space-x-1">
+                        <i data-lucide="mail" class="w-5 h-5"></i>
+                        <span>Contact</span>
+                    </a>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button @click="mobileMenuOpen = !mobileMenuOpen" class="focus:outline-none">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div x-show="mobileMenuOpen" class="md:hidden bg-white shadow-md"
+            x-transition:enter="transition ease-out duration-300"
+            x-transition:enter-start="opacity-0 transform -translate-y-2"
+            x-transition:enter-end="opacity-100 transform translate-y-0"
+            x-transition:leave="transition ease-in duration-200"
+            x-transition:leave-start="opacity-100 transform translate-y-0"
+            x-transition:leave-end="opacity-0 transform -translate-y-2">
+            <div class="px-4 pt-2 pb-3 space-y-1">
+                <a href="index.html" class="flex items-center text-text-dark hover:text-primary py-2 space-x-1">
+                    <i data-lucide="home" class="w-5 h-5"></i>
+                    <span>Home</span>
+                </a>
+                <a href="about.html" class="flex items-center text-text-dark hover:text-primary py-2 space-x-1">
+                    <i data-lucide="user" class="w-5 h-5"></i>
+                    <span>About</span>
+                </a>
+                <a href="portfolio.html" class="flex items-center text-text-dark hover:text-primary py-2 space-x-1">
+                    <i data-lucide="image" class="w-5 h-5"></i>
+                    <span>Portfolio</span>
+                </a>
+                <a href="services.html" class="flex items-center text-text-dark hover:text-primary py-2 space-x-1">
+                    <i data-lucide="settings" class="w-5 h-5"></i>
+                    <span>Services</span>
+                </a>
+                <a href="contact.html" class="flex items-center text-text-dark hover:text-primary py-2 space-x-1">
+                    <i data-lucide="mail" class="w-5 h-5"></i>
+                    <span>Contact</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero/Intro Section -->
+    <section class="pt-32 pb-16 bg-gradient-to-r from-primary to-secondary text-white relative overflow-hidden">
+        <div class="absolute inset-0 bg-black opacity-40"></div>
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-5xl font-serif mb-4 animate-fade-in">Get in Touch</h1>
+            <p class="text-xl mb-8 animate-fade-in delay-200">Let's discuss your next event, brand content, or shoemaking needs</p>
+        </div>
+    </section>
+
+    <!-- Contact Form and Info Section -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <!-- Contact Form -->
+                <div>
+                    <h2 class="text-4xl font-serif mb-6">Send a Message</h2>
+                    <form id="contact-form" action="https://formspree.io/f/mnnnryrw" method="POST" class="space-y-6">
+                        <div>
+                            <label for="name" class="block text-sm font-medium mb-2">Name</label>
+                            <input type="text" id="name" name="name" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary" required>
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium mb-2">Email</label>
+                            <input type="email" id="email" name="email" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary" required>
+                        </div>
+                        <div>
+                            <label for="subject" class="block text-sm font-medium mb-2">Subject</label>
+                            <select id="subject" name="subject" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary" required>
+                                <option value="">Select a service</option>
+                                <option value="Event Videography">Event Videography</option>
+                                <option value="Wedding Photography">Wedding Photography</option>
+                                <option value="Brand Content">Brand Content Creation</option>
+                                <option value="Shoemaking">Custom Shoemaking</option>
+                                <option value="Training">Shoemaking Training</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="message" class="block text-sm font-medium mb-2">Message</label>
+                            <textarea id="message" name="message" rows="5" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary" required></textarea>
+                        </div>
+                        <button type="submit" class="bg-primary text-white px-6 py-3 rounded-full font-bold hover:bg-opacity-90 transition">Send Message</button>
+                    </form>
+                </div>
+                <!-- Contact Info -->
+                <div>
+                    <h2 class="text-4xl font-serif mb-6">Contact Information</h2>
+                    <div class="space-y-4 mb-8">
+                        <div class="flex items-center">
+                            <i data-lucide="map-pin" class="w-6 h-6 text-primary mr-3"></i>
+                            <p>Ado Ekiti, Nigeria</p>
+                        </div>
+                        <div class="flex items-center">
+                            <i data-lucide="phone" class="w-6 h-6 text-primary mr-3"></i>
+                            <a href="tel:+23408137788406" class="hover:text-primary">+234 0813 778 8406</a>
+                        </div>
+                        <div class="flex items-center">
+                            <i data-lucide="mail" class="w-6 h-6 text-primary mr-3"></i>
+                            <a href="mailto:fawekunsusan@gmail.com" class="hover:text-primary">fawekunsusan@gmail.com</a>
+                        </div>
+                        <div class="flex items-center">
+                            <i data-lucide="instagram" class="w-6 h-6 text-primary mr-3"></i>
+                            <a href="https://www.instagram.com/oh_susaanna?igsh=MXhiZ2liaDlnanpzbw==" target="_blank" class="hover:text-primary">@oh_susaanna</a>
+                        </div>
+                        <div class="flex items-center">
+                            <i data-lucide="video" class="w-6 h-6 text-primary mr-3"></i>
+                            <a href="https://www.tiktok.com/@sweetgemma207/video/7545130114074381576?is_from_webapp=1&sender_device=pc&web_id=7582244242430641672" target="_blank" class="hover:text-primary">TikTok Profile</a>
+                        </div>
+                    </div>
+                    <!-- Embedded Map -->
+                    <h3 class="text-2xl font-bold mb-4">Location</h3>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3948.141586844137!2d5.2206999!3d7.6214999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103b8f1b1b1b1b1b%3A0x1b1b1b1b1b1b1b1b!2sAdo%20Ekiti%2C%20Nigeria!5e0!3m2!1sen!2sus!4v1630000000000" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-16 bg-neutral">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-serif text-center mb-12">Frequently Asked Questions</h2>
+            <div class="space-y-6" x-data="{ openFaq: null }">
+                <!-- FAQ Item 1 -->
+                <div class="bg-white rounded-lg shadow-md">
+                    <button @click="openFaq = (openFaq === 1 ? null : 1)" class="w-full px-6 py-4 text-left flex justify-between items-center">
+                        <span class="font-bold">How long does it take to receive edited content?</span>
+                        <i :data-lucide="openFaq === 1 ? 'chevron-up' : 'chevron-down'" class="w-5 h-5"></i>
+                    </button>
+                    <div x-show="openFaq === 1" class="px-6 pb-4 text-gray-600">
+                        Typically 1-2 weeks for standard packages, depending on the project size.
+                    </div>
+                </div>
+                <!-- FAQ Item 2 -->
+                <div class="bg-white rounded-lg shadow-md">
+                    <button @click="openFaq = (openFaq === 2 ? null : 2)" class="w-full px-6 py-4 text-left flex justify-between items-center">
+                        <span class="font-bold">Do you travel for events?</span>
+                        <i :data-lucide="openFaq === 2 ? 'chevron-up' : 'chevron-down'" class="w-5 h-5"></i>
+                    </button>
+                    <div x-show="openFaq === 2" class="px-6 pb-4 text-gray-600">
+                        Yes, available for travel within Nigeria. Additional fees may apply.
+                    </div>
+                </div>
+                <!-- FAQ Item 3 -->
+                <div class="bg-white rounded-lg shadow-md">
+                    <button @click="openFaq = (openFaq === 3 ? null : 3)" class="w-full px-6 py-4 text-left flex justify-between items-center">
+                        <span class="font-bold">What payment methods do you accept?</span>
+                        <i :data-lucide="openFaq === 3 ? 'chevron-up' : 'chevron-down'" class="w-5 h-5"></i>
+                    </button>
+                    <div x-show="openFaq === 3" class="px-6 pb-4 text-gray-600">
+                        Bank transfers, mobile money, and cash. 50% deposit required to book.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Simple Footer -->
+<footer class="bg-text-dark text-white py-6">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div class="flex justify-center space-x-6 mb-4">
+            <a href="https://www.instagram.com/oh_susaanna?igsh=MXhiZ2liaDlnanpzbw==" target="_blank" class="hover:text-secondary">
+                <i data-lucide="instagram" class="w-6 h-6"></i>
+            </a>
+            <a href="https://www.tiktok.com/@sweetgemma207?_t=ZS-90KWRvg4C7I&_r=1" target="_blank" class="hover:text-secondary">
+                <i data-lucide="video" class="w-6 h-6"></i>
+            </a>
+            <a href="mailto:fawekunsusan@gmail.com" class="hover:text-secondary">
+                <i data-lucide="mail" class="w-6 h-6"></i>
+            </a>
+            <a href="tel:+23408137788406" class="hover:text-secondary">
+                <i data-lucide="phone" class="w-6 h-6"></i>
+            </a>
+        </div>
+        <p class="text-sm mb-1">&copy; 2025 Aanuoluwapo Susan. All rights reserved.</p>
+        <p class="text-sm">
+            Designed and Developed by 
+            <a href="https://folio-two-blush.vercel.app/" target="_blank" class="text-secondary hover:underline font-semibold">
+                Alonge Korede
+            </a>
+        </p>
+    </div>
+</footer>
+
+    <script>
+        lucide.createIcons();
+        document.getElementById('contact-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const formData = new FormData(this);
+            try {
+                const response = await fetch(this.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+                if (response.ok) {
+                    Toastify({
+                        text: "Message sent successfully!",
+                        duration: 3000,
+                        gravity: "top",
+                        position: "right",
+                        style: {
+                            background: "linear-gradient(to right, #00b09b, #96c93d)",
+                        }
+                    }).showToast();
+                    this.reset();
+                } else {
+                    throw new Error('Failed to send message');
+                }
+            } catch (error) {
+                Toastify({
+                    text: "Error sending message. Please try again.",
+                    duration: 3000,
+                    gravity: "top",
+                    position: "right",
+                    style: {
+                        background: "linear-gradient(to right, #ff5f6d, #ffc371)",
+                    }
+                }).showToast();
+            }
+        });
+    </script>
+    <style>
+        @keyframes fade-in {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in { animation: fade-in 1s ease-out forwards; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-400 { animation-delay: 0.4s; }
+    </style>
+</body>
+</html>
