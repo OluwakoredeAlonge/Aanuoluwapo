@@ -100,11 +100,13 @@
     </nav>
 
     <!-- Hero/Intro Section -->
-    <section class="pt-32 pb-16 bg-gradient-to-r from-primary to-secondary text-white relative overflow-hidden">
-        <div class="absolute inset-0 bg-black opacity-40"></div>
+    <section class="pt-32 pb-16 bg-gradient-to-r from-neutral via-primary/20 to-secondary/20 text-white relative overflow-hidden min-h-[60vh] flex items-center justify-center">
+        <canvas id="particles" class="absolute inset-0 z-0 opacity-70"></canvas>
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/20"></div>
         <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h1 class="text-5xl font-serif mb-4 animate-fade-in">Get in Touch</h1>
-            <p class="text-xl mb-8 animate-fade-in delay-200">Let's discuss your next event, brand content, or shoemaking needs</p>
+            <h1 class="text-5xl md:text-7xl font-serif mb-6 animate-fade-in">Get in Touch</h1>
+            <p class="text-xl md:text-3xl mb-8 animate-fade-in delay-200 max-w-3xl mx-auto">Let's discuss your next event, brand content, or shoemaking needs</p>
+            <a href="#contact-form" class="inline-block bg-white text-primary px-8 py-3 rounded-full font-bold hover:bg-opacity-90 transition animate-fade-in delay-400">Send Message</a>
         </div>
     </section>
 
@@ -113,7 +115,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
                 <!-- Contact Form -->
-                <div>
+                <div id="contact-form">
                     <h2 class="text-4xl font-serif mb-6">Send a Message</h2>
                     <form id="contact-form" action="https://formspree.io/f/mnnnryrw" method="POST" class="space-y-6">
                         <div>
@@ -281,6 +283,60 @@
                 }).showToast();
             }
         });
+        const canvas = document.getElementById('particles');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        window.addEventListener('resize', () => {
+          canvas.width = window.innerWidth;
+          canvas.height = window.innerHeight;
+        });
+        class Particle {
+          constructor() {
+            this.x = Math.random() * canvas.width;
+            this.y = Math.random() * canvas.height;
+            this.size = Math.random() * 4 + 1;
+            this.speedX = Math.random() * 1 - 0.5;
+            this.speedY = Math.random() * 1 - 0.5;
+            this.color = `hsl(${Math.random() * 60 + 200}, 70%, 50%)`; // Blue-gold tones
+            this.opacity = Math.random() * 0.3 + 0.2;
+          }
+          update() {
+            this.x += this.speedX;
+            this.y += this.speedY;
+            if (this.size > 0.2) this.size -= 0.02;
+            if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+            if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+          }
+          draw() {
+            ctx.globalAlpha = this.opacity;
+            ctx.fillStyle = this.color;
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.globalAlpha = 1;
+          }
+        }
+        let particles = [];
+        function handleParticles() {
+          for (let i = 0; i < particles.length; i++) {
+            particles[i].update();
+            particles[i].draw();
+            if (particles[i].size <= 0.2) {
+              particles.splice(i, 1);
+              i--;
+            }
+          }
+        }
+        function animate() {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          if (particles.length < 50) {
+            particles.push(new Particle());
+          }
+          handleParticles();
+          requestAnimationFrame(animate);
+        }
+        animate();
     </script>
     <style>
         @keyframes fade-in {

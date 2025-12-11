@@ -25,6 +25,43 @@
             },
         };
     </script>
+    <style>
+    .bubble {
+        position: absolute;
+        bottom: -150px;
+        width: 40px;
+        height: 40px;
+
+
+        border-radius: 50%;
+        backdrop-filter: blur(4px);
+        animation: rise 12s infinite ease-in;
+    }
+.bg-neon-pink { background-color: #ff2fd2; }
+.bg-neon-blue { background-color: #2fd2ff; }
+.bg-neon-green { background-color: #39ff14; }
+.bg-neon-yellow { background-color: #faff00; }
+
+    /* Random positions + sizes */
+    .bubble:nth-child(1) { left: 10%; width: 30px; height: 30px; animation-duration: 14s; }
+    .bubble:nth-child(2) { left: 20%; width: 50px; height: 50px; animation-duration: 18s; }
+    .bubble:nth-child(3) { left: 35%; width: 25px; height: 25px; animation-duration: 12s; }
+    .bubble:nth-child(4) { left: 50%; width: 45px; height: 45px; animation-duration: 20s; }
+    .bubble:nth-child(5) { left: 65%; width: 35px; height: 35px; animation-duration: 15s; }
+    .bubble:nth-child(6) { left: 75%; width: 25px; height: 25px; animation-duration: 17s; }
+    .bubble:nth-child(7) { left: 85%; width: 55px; height: 55px; animation-duration: 22s; }
+    .bubble:nth-child(8) { left: 30%; width: 28px; height: 28px; animation-duration: 16s; }
+    .bubble:nth-child(9) { left: 55%; width: 20px; height: 20px; animation-duration: 13s; }
+    .bubble:nth-child(10) { left: 90%; width: 40px; height: 40px; animation-duration: 19s; }
+
+@keyframes rise {
+    0% { transform: translateY(0) scale(1); opacity: 0.3; }
+    50% { opacity: 0.6; }
+    100% { transform: translateY(-140vh) scale(1.4); opacity: 0; }
+}
+
+</style>
+
 </head>
 <body class="bg-neutral font-sans text-text-dark" x-data="{ mobileMenuOpen: false }" @click.outside="mobileMenuOpen = false">
 
@@ -98,10 +135,14 @@
 </nav>
 
 <!-- Hero/Intro Section -->
-<section class="pt-32 pb-16 bg-gradient-to-r from-primary to-secondary text-white relative overflow-hidden">
-    <!-- Dark overlay -->
-    <div class="absolute inset-0 bg-black opacity-40"></div>
+<section class="pt-32 pb-16 text-text-dark relative overflow-hidden bg-gradient-to-br from-neutral to-white">
+    <!-- Bubble Container -->
+<div class="bubble" style="left: 43%; width: 20px; height: 20px; animation-duration: 24s; animation-delay: -3.2119678556353914s; background-color: #4169E1;"></div><div class="bubble" style="left: 47%; width: 25px; height: 25px; animation-duration: 25s; animation-delay: -1.378262432867023s; background-color: #4169E1;"></div><div class="bubble" style="left: 5%; width: 53px; height: 53px; animation-duration: 24s; animation-delay: -1.312659770570097s; background-color: #faff00;"></div><div class="bubble" style="left: 74%; width: 41px; height: 41px; animation-duration: 19s; animation-delay: -0.4121834976318578s; background-color: #faff00;"></div><div class="bubble" style="left: 44%; width: 59px; height: 59px; animation-duration: 23s; animation-delay: -1.3602205770450677s; background-color: #2fd2ff;"></div><div class="bubble" style="left: 43%; width: 50px; height: 50px; animation-duration: 15s; animation-delay: -3.9416172166615477s; background-color: #4169E1;"></div><div class="bubble" style="left: 42%; width: 50px; height: 50px; animation-duration: 10s; animation-delay: -2.4041104765867374s; background-color: #39ff14;"></div><div class="bubble" style="left: 61%; width: 55px; height: 55px; animation-duration: 13s; animation-delay: -4.700155341150749s; background-color: #faff00;"></div><div class="bubble" style="left: 76%; width: 47px; height: 47px; animation-duration: 21s; animation-delay: -2.1034711777086783s; background-color: #4169E1;"></div><div class="bubble" style="left: 70%; width: 21px; height: 21px; animation-duration: 18s; animation-delay: -1.9224946556756173s; background-color: #FFD700;"></div><div class="bubble" style="left: 92%; width: 30px; height: 30px; animation-duration: 14s; animation-delay: -3.092667973170953s; background-color: #ff2fd2;"></div><div class="bubble" style="left: 78%; width: 46px; height: 46px; animation-duration: 12s; animation-delay: -1.679751557110546s; background-color: #4169E1;"></div><div class="bubble" style="left: 30%; width: 41px; height: 41px; animation-duration: 16s; animation-delay: -4.723014146383993s; background-color: #FFD700;"></div><div class="bubble" style="left: 83%; width: 53px; height: 53px; animation-duration: 14s; animation-delay: -0.634927978563834s; background-color: #FFD700;"></div><div class="bubble" style="left: 53%; width: 20px; height: 20px; animation-duration: 14s; animation-delay: -0.1660704178460265s; background-color: #2fd2ff;"></div><div class="bubble" style="left: 78%; width: 28px; height: 28px; animation-duration: 13s; animation-delay: -3.580936998107909s; background-color: #ff2fd2;"></div><div class="bubble" style="left: 54%; width: 25px; height: 25px; animation-duration: 22s; animation-delay: -4.133834324483657s; background-color: #ff2fd2;"></div><div class="bubble" style="left: 58%; width: 33px; height: 33px; animation-duration: 24s; animation-delay: -2.781774693826051s; background-color: #faff00;"></div><div class="bubble" style="left: 36%; width: 27px; height: 27px; animation-duration: 25s; animation-delay: -1.1227185352493796s; background-color: #4169E1;"></div><div class="bubble" style="left: 77%; width: 33px; height: 33px; animation-duration: 18s; animation-delay: -1.63801871089309s; background-color: #faff00;"></div>
 
+    <!-- Subtle Overlay for Contrast -->
+    <div class="absolute inset-0 bg-gradient-to-b from-transparent to-primary/10"></div>
+
+    <!-- Main Content -->
     <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <!-- Profile Image -->
         <div class="mx-auto w-40 h-40 sm:w-48 sm:h-48 md:w-56 md:h-56 rounded-full overflow-hidden border-4 border-white shadow-2xl mb-6">
@@ -109,8 +150,13 @@
         </div>
 
         <!-- Hero Text -->
-        <h1 class="text-4xl sm:text-5xl md:text-6xl font-serif mb-4 animate-fade-in">About Aanuoluwapo Susan</h1>
-        <p class="text-lg sm:text-xl md:text-2xl mb-8 animate-fade-in delay-200">Creative Content Creator & Shoemaking Expert</p>
+        <h1 class="text-4xl sm:text-5xl md:text-6xl font-serif mb-4 animate-fade-in">
+            About Aanuoluwapo Susan
+        </h1>
+
+        <p class="text-lg sm:text-xl md:text-2xl mb-8 animate-fade-in delay-200">
+            Creative Content Creator, Event Planner & Shoemaking Expert
+        </p>
     </div>
 </section>
 
@@ -129,6 +175,8 @@
     <p>With skills honed in shoemaking and training from 2017-2020, Aanuoluwapo is also certified in Project Management. She is self-motivated, dedicated to quality, and passionate about impacting knowledge. Her understanding of Nigerian Labour Law complements her commitment to continuous learning.</p>
     
     <p>Beyond shoemaking, Aanuoluwapo has solid knowledge in content creation, specializing in capturing videos and photos for events, weddings, families, brands, and businesses. Her work blends creativity with technical expertise, turning moments into memorable visual stories. A refined and God-fearing woman, she is committed to empowering businesses through creativity, strategy, and impactful solutions.</p>
+
+    <p>As a successful event planner and full-time content creator at Atlas Motel Ado Ekiti, she has organized numerous successful events, boosting social visibility and engagement for the brand.</p>
 </div>
 
       <!-- Behind-the-Scenes Image -->
@@ -150,6 +198,46 @@
   </div>
 </section>
 
+    <!-- Shoemaking Highlights Carousel Section -->
+    <section class="py-16 bg-neutral">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-serif text-center mb-12">Shoemaking Highlights</h2>
+            <p class="text-center text-lg mb-8">In my shoemaking career, I focus on creating new designs and custom builds for customers. Here are glimpses of my creative process and training sessions with students.</p>
+            <div x-data="{ currentSlide: 0 }" class="relative">
+                <!-- Carousel Wrapper -->
+                <div class="overflow-hidden rounded-xl shadow-lg">
+                    <div class="flex transition-transform duration-500 ease-in-out" :style="'transform: translateX(-' + currentSlide * 100 + '%)'">
+                        <!-- Slide 1: Placeholder for creating footwear -->
+                        <div class="min-w-full">
+                            <img src="https://images.unsplash.com/photo-1759662232622-6c0754a379f4?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHNob2UlMjBtYWtpbmd8ZW58MHx8MHx8fDA%3D" alt="Aanuoluwapo creating new footwear designs" class="w-full h-auto object-cover">
+                        </div>
+                        <!-- Slide 2: Placeholder for training students -->
+                           <div class="min-w-full">
+                            <img src="https://images.unsplash.com/photo-1759662232622-6c0754a379f4?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHNob2UlMjBtYWtpbmd8ZW58MHx8MHx8fDA%3D" alt="Aanuoluwapo creating new footwear designs" class="w-full h-auto object-cover">
+                        </div>
+                        <!-- Add more slides as needed -->
+                            <div class="min-w-full">
+                            <img src="https://images.unsplash.com/photo-1759662232622-6c0754a379f4?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHNob2UlMjBtYWtpbmd8ZW58MHx8MHx8fDA%3D" alt="Aanuoluwapo creating new footwear designs" class="w-full h-auto object-cover">
+                        </div>
+                    </div>
+                </div>
+                <!-- Navigation Buttons -->
+                <button @click="currentSlide = (currentSlide > 0) ? currentSlide - 1 : 2" class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-50 p-2 rounded-full hover:bg-opacity-75 transition">
+                    <i data-lucide="chevron-left" class="w-6 h-6 text-text-dark"></i>
+                </button>
+                <button @click="currentSlide = (currentSlide < 2) ? currentSlide + 1 : 0" class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-50 p-2 rounded-full hover:bg-opacity-75 transition">
+                    <i data-lucide="chevron-right" class="w-6 h-6 text-text-dark"></i>
+                </button>
+                <!-- Dots Indicator -->
+                <div class="flex justify-center space-x-2 mt-4">
+                    <div @click="currentSlide = 0" :class="{ 'bg-primary': currentSlide === 0, 'bg-gray-300': currentSlide !== 0 }" class="w-3 h-3 rounded-full cursor-pointer"></div>
+                    <div @click="currentSlide = 1" :class="{ 'bg-primary': currentSlide === 1, 'bg-gray-300': currentSlide !== 1 }" class="w-3 h-3 rounded-full cursor-pointer"></div>
+                    <div @click="currentSlide = 2" :class="{ 'bg-primary': currentSlide === 2, 'bg-gray-300': currentSlide !== 2 }" class="w-3 h-3 rounded-full cursor-pointer"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Core Skills Section -->
     <section class="py-16 bg-neutral">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -161,7 +249,7 @@
                         <i data-lucide="scissors" class="w-6 h-6 text-primary mr-3"></i>
                         <h3 class="text-xl font-bold">Shoemaking & Training</h3>
                     </div>
-                    <p>Making of male and female cover shoes, sandals, and palm slippers. Skilled in shoe repair and maintenance.</p>
+                    <p>Creating new designs and custom builds for male and female cover shoes, sandals, and palm slippers.</p>
                 </div>
                 <div class="bg-white p-6 rounded-lg shadow-md cursor-pointer hover:shadow-xl transition-shadow" data-index="2">
                     <div class="flex items-center mb-4">
@@ -172,19 +260,26 @@
                 </div>
                 <div class="bg-white p-6 rounded-lg shadow-md cursor-pointer hover:shadow-xl transition-shadow" data-index="3">
                     <div class="flex items-center mb-4">
+                        <i data-lucide="calendar" class="w-6 h-6 text-primary mr-3"></i>
+                        <h3 class="text-xl font-bold">Event Planning</h3>
+                    </div>
+                    <p>Expert in organizing successful events, boosting social visibility and engagement.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md cursor-pointer hover:shadow-xl transition-shadow" data-index="4">
+                    <div class="flex items-center mb-4">
                         <i data-lucide="briefcase" class="w-6 h-6 text-primary mr-3"></i>
                         <h3 class="text-xl font-bold">Project Management</h3>
                     </div>
                     <p>Certified in Project Management with excellent use of Microsoft Office tools.</p>
                 </div>
-                <div class="bg-white p-6 rounded-lg shadow-md cursor-pointer hover:shadow-xl transition-shadow" data-index="4">
+                <div class="bg-white p-6 rounded-lg shadow-md cursor-pointer hover:shadow-xl transition-shadow" data-index="5">
                     <div class="flex items-center mb-4">
                         <i data-lucide="message-square" class="w-6 h-6 text-primary mr-3"></i>
                         <h3 class="text-xl font-bold">Communication & Presentation</h3>
                     </div>
                     <p>Good communication skills, presentation, and reporting with proficient use of English.</p>
                 </div>
-                <div class="bg-white p-6 rounded-lg shadow-md cursor-pointer hover:shadow-xl transition-shadow" data-index="5">
+                <div class="bg-white p-6 rounded-lg shadow-md cursor-pointer hover:shadow-xl transition-shadow" data-index="6">
                     <div class="flex items-center mb-4">
                         <i data-lucide="users" class="w-6 h-6 text-primary mr-3"></i>
                         <h3 class="text-xl font-bold">Personal Attributes</h3>
@@ -200,24 +295,73 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 class="text-4xl font-serif text-center mb-12">Work Experience</h2>
             <div class="space-y-8">
-                <!-- Experience Item 1 -->
+                <!-- Full-Time Experience -->
                 <div class="bg-neutral p-6 rounded-lg shadow-md">
-                    <h3 class="text-2xl font-bold mb-2">Voluntary NYSC CDS</h3>
-                    <p class="text-gray-600 mb-4">July 2021 – August 2021 | IBEKWU High School, Umuahia – Abia, Nigeria</p>
+                    <h3 class="text-2xl font-bold mb-2">Administrative Department – Higher Executive Officer (HEO)</h3>
+                    <p class="text-gray-600 mb-4">November 2022 – August 2025</p>
                     <ul class="list-disc pl-6 space-y-2">
-                        <li>Community development skill acquisition program</li>
-                        <li>Trained students in the basics of cobbling</li>
-                        <li>Trained students in the use of basic shoe cobbling materials</li>
+                        <li>Worked within the Administrative Department providing operational, clerical, and organizational support.</li>
+                        <li>Assisted with documentation, reporting, coordination of departmental activities, and general office management.</li>
                     </ul>
                 </div>
-                <!-- Experience Item 2 -->
+                <div class="bg-neutral p-6 rounded-lg shadow-md">
+                    <h3 class="text-2xl font-bold mb-2">Laboratory Scientist</h3>
+                    <p class="text-gray-600 mb-4">August 2025 – Present</p>
+                    <ul class="list-disc pl-6 space-y-2">
+                        <li>Performing diagnostic procedures, sample analysis, and maintaining laboratory standards.</li>
+                        <li>Ensures accuracy in testing, proper documentation, and compliance with laboratory safety protocols.</li>
+                    </ul>
+                </div>
+                <div class="bg-neutral p-6 rounded-lg shadow-md">
+                    <h3 class="text-2xl font-bold mb-2">Content Creator & Event Planner – Atlas Motel Ado Ekiti</h3>
+                    <p class="text-gray-600 mb-4">Full-Time Role</p>
+                    <ul class="list-disc pl-6 space-y-2">
+                        <li>Organizing successful events and creating content to boost social visibility and engagement.</li>
+                        <li>Helped in planning and executing events that enhanced the motel's brand presence.</li>
+                    </ul>
+                </div>
+                <!-- Previous Shoemaking Experience -->
                 <div class="bg-neutral p-6 rounded-lg shadow-md">
                     <h3 class="text-2xl font-bold mb-2">Shoemaking Instructor</h3>
                     <p class="text-gray-600 mb-4">May 2022 – October 2022 | LINK INTERNATIONAL MINISTRIES, Old Umuahia – Abia State, Nigeria</p>
                     <ul class="list-disc pl-6 space-y-2">
-                        <li>Trained students in shoe revamp, maintenance, and repair</li>
-                        <li>Trained students in general footwear production</li>
-                        <li>Trained students in the application of shoemaking in business</li>
+                        <li>Trained students in general footwear production.</li>
+                        <li>Trained students in the application of shoemaking in business.</li>
+                    </ul>
+                </div>
+                <div class="bg-neutral p-6 rounded-lg shadow-md">
+                    <h3 class="text-2xl font-bold mb-2">Voluntary NYSC CDS</h3>
+                    <p class="text-gray-600 mb-4">July 2021 – August 2021 | IBEKWU High School, Umuahia – Abia, Nigeria</p>
+                    <ul class="list-disc pl-6 space-y-2">
+                        <li>Community development skill acquisition program.</li>
+                        <li>Trained students in the basics of cobbling.</li>
+                        <li>Trained students in the use of basic shoe cobbling materials.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Contract & Volunteer Experience -->
+            <h2 class="text-4xl font-serif text-center mt-16 mb-12">Contract & Volunteer Experience</h2>
+            <div class="space-y-8">
+                <div class="bg-neutral p-6 rounded-lg shadow-md">
+                    <h3 class="text-2xl font-bold mb-2">World Health Organization (WHO) – External Monitor</h3>
+                    <p class="text-gray-600 mb-4">2021</p>
+                    <ul class="list-disc pl-6 space-y-2">
+                        <li>Conducted independent monitoring activities to support program accuracy, field compliance, and reporting.</li>
+                    </ul>
+                </div>
+                <div class="bg-neutral p-6 rounded-lg shadow-md">
+                    <h3 class="text-2xl font-bold mb-2">AGILE Project – External Monitor</h3>
+                    <p class="text-gray-600 mb-4">2025</p>
+                    <ul class="list-disc pl-6 space-y-2">
+                        <li>Carried out field monitoring activities, data verification, and reporting to support program objectives.</li>
+                    </ul>
+                </div>
+                <div class="bg-neutral p-6 rounded-lg shadow-md">
+                    <h3 class="text-2xl font-bold mb-2">TeenWaves – Videographer Volunteer</h3>
+                    <p class="text-gray-600 mb-4">Date not specified</p>
+                    <ul class="list-disc pl-6 space-y-2">
+                        <li>Provided volunteer videography services for youth-focused programs and events, supporting media coverage and documentation.</li>
                     </ul>
                 </div>
             </div>

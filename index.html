@@ -3,6 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="description" content="Showcasing the work of Fawekun Aanuoluwapo Susan, a skilled content creator, event planner, and skillful shoemaker. Explore creative projects, innovative designs, and custom web solutions.">
+  <meta name="Fawekun Aanuoluwapo Susan" content="web developer, graphic designer, portfolio,">
+  <meta property="og:title" content="Fawekun Aanuoluwapo Susan - Portfolio">
+  <meta property="og:description" content="Showcasing innovative web development and design projects.">
+  <meta property="og:image" content="assets/image.jpg">
+  <meta property="og:url" content="https://yourdomain.com">
     <title>Aanuoluwapo's Portfolio - Capturing Moments</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
@@ -97,17 +103,40 @@
     </div>
 </nav>
     <!-- Hero Section (TikTok embed removed) -->
-    <section class="pt-16 bg-gradient-to-r from-primary to-secondary text-white h-screen flex items-center justify-center relative overflow-hidden">
-        <div class="absolute inset-0 bg-black opacity-40"></div> <!-- Lighter overlay for brighter feel -->
-        <div class="relative z-10 text-center px-4 max-w-4xl mx-auto">
-            <h1 class="text-5xl md:text-7xl font-serif mb-4 animate-fade-in">Capturing Life's Moments</h1>
-            <p class="text-xl md:text-2xl mb-8 animate-fade-in delay-200">Videos & Photos for Events, Brands, and Families by Aanuoluwapo Susan</p>
-            <div class="space-x-4 animate-fade-in delay-400">
-                <a href="portfolio.html" class="bg-white text-primary px-6 py-3 rounded-full font-bold hover:bg-opacity-90 transition">View Portfolio</a>
-                <a href="contact.html" class="bg-transparent border-2 border-white text-white px-6 py-3 rounded-full font-bold hover:bg-white hover:text-primary transition">Contact Me</a>
-            </div>
+  <section 
+    class="pt-16 bg-cover bg-center bg-no-repeat text-white h-screen flex items-center justify-center relative overflow-hidden" 
+    style="background-image: url('asset/home.jpeg');"
+>
+    <div class="absolute inset-0 bg-black bg-opacity-60"></div> 
+    <!-- Dark overlay (increase opacity for darker, decrease for lighter) -->
+
+    <div class="relative z-10 text-center px-4 max-w-4xl mx-auto">
+        <h1 class="text-5xl md:text-7xl font-serif mb-4 animate-fade-in">
+            Capturing Life's Moments
+        </h1>
+
+        <p class="text-xl md:text-2xl mb-8 animate-fade-in delay-200">
+            Videos & Photos for Events, Brands, and Families by Aanuoluwapo Susan
+        </p>
+
+        <div class="space-x-4 animate-fade-in delay-400">
+            <a 
+                href="portfolio.html" 
+                class="bg-white text-primary px-6 py-3 rounded-full font-bold hover:bg-opacity-90 transition"
+            >
+                View Portfolio
+            </a>
+
+            <a 
+                href="contact.html" 
+                class="bg-transparent border-2 border-white text-white px-6 py-3 rounded-full font-bold hover:bg-white hover:text-primary transition"
+            >
+                Contact Me
+            </a>
         </div>
-    </section>
+    </div>
+</section>
+
 
     <!-- Featured Work Section (Added TikTok embed here as a featured reel) -->
     <section class="py-16 bg-white">
@@ -128,12 +157,58 @@
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8" x-data="{ active: 0 }">
                 <!-- Featured Item 1 -->
-                <div class="group relative overflow-hidden rounded-lg shadow-lg cursor-pointer" @mouseover="active = 1" @mouseleave="active = 0">
-                    <img src="https://placehold.co/600x400?text=Wedding+Highlight" alt="Wedding Video" class="w-full h-64 object-cover transition-transform group-hover:scale-105">
-                    <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                        <p class="text-white text-xl font-bold">Wedding Reel</p>
-                    </div>
-                </div>
+      <!-- Carousel card (drop this where your first featured item was) -->
+<div
+  x-data="{
+    images: [
+      { src: 'asset/paint-sip.jpeg', label: 'Paint & Sip' },
+      { src: 'asset/paint-sip2.jpeg', label: 'Paint & Sip 2' },
+      { src: 'asset/paint-sip3.jpeg', label: 'Paint & Sip 3' }
+    ],
+    active: 0,
+    intervalId: null,
+    start() {
+      this.intervalId = setInterval(() => { this.active = (this.active + 1) % this.images.length }, 3500)
+    },
+    stop() {
+      clearInterval(this.intervalId)
+      this.intervalId = null
+    }
+  }"
+  x-init="start()"
+  x-on:mouseenter="stop()"
+  x-on:mouseleave="start()"
+  class="group relative overflow-hidden rounded-lg shadow-lg cursor-pointer h-64"
+>
+  <!-- images -->
+  <template x-for="(image, index) in images" :key="index">
+    <img
+      :src="image.src"
+      alt=""
+      class="absolute inset-0 w-full h-full object-cover transition-opacity duration-700"
+      :class="active === index ? 'opacity-100' : 'opacity-0'"
+    >
+  </template>
+
+  <!-- overlay and label -->
+  <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity z-10">
+    <p class="text-white text-xl font-bold" x-text="images[active].label"></p>
+  </div>
+
+  <!-- optional dots -->
+  <div class="absolute bottom-3 left-0 right-0 flex justify-center gap-2 z-20">
+    <template x-for="(img, i) in images" :key="i">
+      <button
+        class="w-2 h-2 rounded-full bg-white bg-opacity-50 hover:bg-opacity-100 focus:outline-none"
+        :class="active === i ? 'scale-110 bg-opacity-100' : ''"
+        x-on:click="active = i"
+        :aria-label="`Go to slide ${i+1}`"
+      ></button>
+    </template>
+  </div>
+</div>
+
+
                 <!-- Featured Item 2 -->
                 <div class="group relative overflow-hidden rounded-lg shadow-lg cursor-pointer" @mouseover="active = 2" @mouseleave="active = 0">
                     <img src="https://placehold.co/600x400?text=Family+Event" alt="Family Event Photo" class="w-full h-64 object-cover transition-transform group-hover:scale-105">

@@ -98,16 +98,18 @@
     </nav>
 
     <!-- Hero/Intro Section -->
-    <section class="pt-32 pb-16 bg-gradient-to-r from-primary to-secondary text-white relative overflow-hidden">
-        <div class="absolute inset-0 bg-black opacity-40"></div>
+    <section class="pt-32 pb-16 bg-gradient-to-r from-neutral via-primary/20 to-secondary/20 text-white relative overflow-hidden min-h-[60vh] flex items-center justify-center">
+        <canvas id="particles" class="absolute inset-0 z-0 opacity-70"></canvas>
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/20"></div>
         <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h1 class="text-5xl font-serif mb-4 animate-fade-in">My Portfolio</h1>
-            <p class="text-xl mb-8 animate-fade-in delay-200">Showcasing Videos & Photos from Events, Weddings, Families, and Brands</p>
+            <h1 class="text-5xl md:text-7xl font-serif mb-6 animate-fade-in">My Portfolio</h1>
+            <p class="text-xl md:text-3xl mb-8 animate-fade-in delay-200 max-w-3xl mx-auto">Showcasing captivating videos and photos from events, weddings, family moments, and brand collaborations</p>
+            <a href="#gallery" class="inline-block bg-white text-primary px-8 py-3 rounded-full font-bold hover:bg-opacity-90 transition animate-fade-in delay-400">Explore Below</a>
         </div>
     </section>
 
     <!-- Portfolio Sections -->
-    <section class="py-16 bg-white">
+    <section id="gallery" class="py-16 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 class="text-4xl font-serif text-center mb-12">Explore My Work</h2>
 
@@ -217,7 +219,7 @@
                     <span class="text-primary font-bold hover:underline">Go to TikTok <i data-lucide="arrow-right" class="inline w-4 h-4"></i></span>
                 </a>
                 <!-- Google Drive Card -->
-                <a href="https://drive.google.com/drive/folders/1z5hmwT0fUdZprLdtULXYykDIXnJvNYZg" target="_blank" class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow flex flex-col items-center text-center">
+                <a href="https://drive.google.com/drive/folders/1z55hmwT0fUdZprLdtULXYykDIXnJvNYZg" target="_blank" class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow flex flex-col items-center text-center">
                     <i data-lucide="folder" class="w-12 h-12 text-primary mb-4"></i>
                     <h3 class="text-2xl font-bold mb-2">View on Google Drive</h3>
                     <p class="mb-4">Access full galleries, high-res photos, and extended videos from various events and collaborations.</p>
@@ -256,6 +258,60 @@
 
     <script>
         lucide.createIcons();
+        const canvas = document.getElementById('particles');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        window.addEventListener('resize', () => {
+          canvas.width = window.innerWidth;
+          canvas.height = window.innerHeight;
+        });
+        class Particle {
+          constructor() {
+            this.x = Math.random() * canvas.width;
+            this.y = Math.random() * canvas.height;
+            this.size = Math.random() * 4 + 1;
+            this.speedX = Math.random() * 1 - 0.5;
+            this.speedY = Math.random() * 1 - 0.5;
+            this.color = `hsl(${Math.random() * 60 + 200}, 70%, 50%)`; // Blue-gold tones
+            this.opacity = Math.random() * 0.3 + 0.2;
+          }
+          update() {
+            this.x += this.speedX;
+            this.y += this.speedY;
+            if (this.size > 0.2) this.size -= 0.02;
+            if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+            if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+          }
+          draw() {
+            ctx.globalAlpha = this.opacity;
+            ctx.fillStyle = this.color;
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.globalAlpha = 1;
+          }
+        }
+        let particles = [];
+        function handleParticles() {
+          for (let i = 0; i < particles.length; i++) {
+            particles[i].update();
+            particles[i].draw();
+            if (particles[i].size <= 0.2) {
+              particles.splice(i, 1);
+              i--;
+            }
+          }
+        }
+        function animate() {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          if (particles.length < 50) {
+            particles.push(new Particle());
+          }
+          handleParticles();
+          requestAnimationFrame(animate);
+        }
+        animate();
     </script>
     <style>
         @keyframes fade-in {
