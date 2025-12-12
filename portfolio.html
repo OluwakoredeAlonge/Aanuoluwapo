@@ -116,40 +116,230 @@
             <!-- Gallery Grid (2 columns, 10 items: 8 images, 2 videos) -->
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
                 <!-- Item 1: Image -->
-                <div class="group relative overflow-hidden rounded-lg shadow-lg">
-                    <img src="https://placehold.co/600x400?text=Work+1" alt="Portfolio Work 1" class="w-full h-64 object-cover transition-transform group-hover:scale-105">
-                    <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-end p-4 opacity-0 group-hover:opacity-100 transition-opacity">
-                        <h3 class="text-white text-lg font-bold">Work Title 1</h3>
-                        <p class="text-white text-sm">Description - Year</p>
-                    </div>
-                </div>
+           <!-- Gathering with Friends Carousel -->
+<div
+  x-data="{
+    images: [
+      { src: 'asset/friends-gathering.JPG', label: 'Gathering with friends' },
+      { src: 'asset/friends-gathering2.JPG', label: 'Gathering with friends' },
+      { src: 'asset/friends-gathering3.JPG', label: 'Gathering with friends' },
+      { src: 'asset/friends-gathering4.JPG', label: 'Gathering with friends' }
+    ],
+    active: 0,
+    intervalId: null,
+    start() {
+      this.intervalId = setInterval(() => {
+        this.active = (this.active + 1) % this.images.length
+      }, 3500)
+    },
+    stop() {
+      clearInterval(this.intervalId)
+      this.intervalId = null
+    }
+  }"
+  x-init="start()"
+  @mouseenter="stop()"
+  @mouseleave="start()"
+  class="group relative overflow-hidden rounded-lg shadow-lg h-96 md:h-80 lg:h-96"
+>
+
+  <!-- Rotating images -->
+  <template x-for="(image, index) in images" :key="index">
+    <img
+      :src="image.src"
+      alt=""
+      class="absolute inset-0 w-full h-full object-contain transition-opacity duration-700"
+      :class="active === index ? 'opacity-100' : 'opacity-0'"
+    >
+  </template>
+
+  <!-- Hover overlay -->
+  <div class="absolute inset-0 flex flex-col justify-end p-4 opacity-0 group-hover:opacity-100 bg-black bg-opacity-40 transition-opacity">
+    <h3 class="text-white text-lg font-bold">Gathering with friends</h3>
+    <p class="text-white text-sm">Friends, fun, and unforgettable moments at Legacy Gardens, Atlas Motel Ado-Ekiti - 2025</p>
+  </div>
+
+  <!-- Navigation dots -->
+  <div class="absolute bottom-3 left-0 right-0 flex justify-center gap-2 z-20">
+    <template x-for="(img, i) in images" :key="i">
+      <button
+        class="w-2 h-2 rounded-full bg-white bg-opacity-50 hover:bg-opacity-100"
+        :class="active === i ? 'scale-110 bg-opacity-100' : ''"
+        @click="active = i"
+      ></button>
+    </template>
+  </div>
+</div>
+
+
                 <!-- Item 2: Image -->
-                <div class="group relative overflow-hidden rounded-lg shadow-lg">
-                    <img src="https://placehold.co/600x400?text=Work+2" alt="Portfolio Work 2" class="w-full h-64 object-cover transition-transform group-hover:scale-105">
-                    <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-end p-4 opacity-0 group-hover:opacity-100 transition-opacity">
-                        <h3 class="text-white text-lg font-bold">Work Title 2</h3>
-                        <p class="text-white text-sm">Description - Year</p>
-                    </div>
-                </div>
+ <!-- Comprehensive High School Ikere Outreach Carousel -->
+<div
+  x-data="{
+    images: [
+      { src: 'asset/compro.JPG', label: 'Comprehensive High School Ikere Outreach' },
+      { src: 'asset/compro2.JPG', label: 'Comprehensive High School Ikere Outreach' },
+      { src: 'asset/compro3.JPG', label: 'Comprehensive High School Ikere Outreach' },
+      { src: 'asset/compro4.JPG', label: 'Comprehensive High School Ikere Outreach' }
+    ],
+    active: 0,
+    intervalId: null,
+    start() {
+      this.intervalId = setInterval(() => {
+        this.active = (this.active + 1) % this.images.length
+      }, 3500)
+    },
+    stop() {
+      clearInterval(this.intervalId)
+      this.intervalId = null
+    }
+  }"
+  x-init="start()"
+  @mouseenter="stop()"
+  @mouseleave="start()"
+  class="group relative overflow-hidden rounded-lg shadow-lg h-96 md:h-80 lg:h-96"
+>
+
+  <!-- Rotating images -->
+  <template x-for="(image, index) in images" :key="index">
+    <img
+      :src="image.src"
+      alt=""
+      class="absolute inset-0 w-full h-full object-contain transition-opacity duration-700"
+      :class="active === index ? 'opacity-100' : 'opacity-0'"
+    >
+  </template>
+
+  <!-- Hover overlay -->
+  <div class="absolute inset-0 flex flex-col justify-end p-4 opacity-0 group-hover:opacity-100 bg-black bg-opacity-40 transition-opacity">
+    <h3 class="text-white text-lg font-bold">Comprehensive High School Ikere Outreach</h3>
+    <p class="text-white text-sm">Organized and led an inspiring outreach program for SS3 students, sharing insights and guidance on life after secondary school - 2025</p>
+  </div>
+
+  <!-- Navigation dots -->
+  <div class="absolute bottom-3 left-0 right-0 flex justify-center gap-2 z-20">
+    <template x-for="(img, i) in images" :key="i">
+      <button
+        class="w-2 h-2 rounded-full bg-white bg-opacity-50 hover:bg-opacity-100"
+        :class="active === i ? 'scale-110 bg-opacity-100' : ''"
+        @click="active = i"
+      ></button>
+    </template>
+  </div>
+</div>
+
                 <!-- Item 3: Video (Placeholder - replace src with actual short video URL) -->
-                <div class="group relative overflow-hidden rounded-lg shadow-lg" x-data="{ playing: false }" @click="playing = !playing">
-                    <video x-bind:autoplay="playing" x-bind:muted="playing" loop class="w-full h-64 object-cover transition-transform group-hover:scale-105" src="https://placehold.co/600x400/mp4?text=Video+1"></video>
-                    <div class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 opacity-100 group-hover:opacity-0 transition-opacity" x-show="!playing">
-                        <i data-lucide="play" class="w-12 h-12 text-white"></i>
-                    </div>
-                    <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-end p-4 opacity-0 group-hover:opacity-100 transition-opacity">
-                        <h3 class="text-white text-lg font-bold">Video Title 1</h3>
-                        <p class="text-white text-sm">Short Video - Year</p>
-                    </div>
-                </div>
+                <!-- CYON November Deanery Meeting Carousel -->
+<div
+  x-data="{
+    images: [
+      { src: 'asset/deanery-meeting.JPG', label: 'CYON November Deanery Meeting 1' },
+      { src: 'asset/deanery-meeting2.JPG', label: 'CYON November Deanery Meeting 2' },
+      { src: 'asset/deanery-meeting3.JPG', label: 'CYON November Deanery Meeting 3' }
+    ],
+    active: 0,
+    intervalId: null,
+    start() {
+      this.intervalId = setInterval(() => {
+        this.active = (this.active + 1) % this.images.length
+      }, 3500)
+    },
+    stop() {
+      clearInterval(this.intervalId)
+      this.intervalId = null
+    }
+  }"
+  x-init="start()"
+  @mouseenter="stop()"
+  @mouseleave="start()"
+  class="group relative overflow-hidden rounded-lg shadow-lg h-96 md:h-80 lg:h-96"
+>
+
+  <!-- Rotating images -->
+  <template x-for="(image, index) in images" :key="index">
+    <img
+      :src="image.src"
+      alt=""
+      class="absolute inset-0 w-full h-full object-contain transition-opacity duration-700"
+      :class="active === index ? 'opacity-100' : 'opacity-0'"
+    >
+  </template>
+
+  <!-- Hover overlay -->
+  <div class="absolute inset-0 flex flex-col justify-end p-4 opacity-0 group-hover:opacity-100 bg-black bg-opacity-40 transition-opacity">
+    <h3 class="text-white text-lg font-bold">CYON Deanery Meeting</h3>
+<p class="text-white text-sm">Captured the key moments and highlights of the CYON Deanery Meeting held in November at Ado Ekiti - 2025</p>
+  </div>
+
+  <!-- Navigation dots -->
+  <div class="absolute bottom-3 left-0 right-0 flex justify-center gap-2 z-20">
+    <template x-for="(img, i) in images" :key="i">
+      <button
+        class="w-2 h-2 rounded-full bg-white bg-opacity-50 hover:bg-opacity-100"
+        :class="active === i ? 'scale-110 bg-opacity-100' : ''"
+        @click="active = i"
+      ></button>
+    </template>
+  </div>
+</div>
+
                 <!-- Item 4: Image -->
-                <div class="group relative overflow-hidden rounded-lg shadow-lg">
-                    <img src="https://placehold.co/600x400?text=Work+3" alt="Portfolio Work 3" class="w-full h-64 object-cover transition-transform group-hover:scale-105">
-                    <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-end p-4 opacity-0 group-hover:opacity-100 transition-opacity">
-                        <h3 class="text-white text-lg font-bold">Work Title 3</h3>
-                        <p class="text-white text-sm">Description - Year</p>
-                    </div>
-                </div>
+                <!-- Racheal Volunteer Event Carousel -->
+<div
+  x-data="{
+    images: [
+      { src: 'asset/racheal-event.JPG', label: 'AGILE project for girls' },
+      { src: 'asset/racheal-event2.JPG', label: 'AGILE project for girls' },
+      { src: 'asset/racheal-event3.JPG', label: 'AGILE project for girls' },
+      { src: 'asset/racheal-event4.JPG', label: 'AGILE project for girls' },
+      { src: 'asset/racheal-event1.JPG', label: 'AGILE project for girls' }
+    ],
+    active: 0,
+    intervalId: null,
+    start() {
+      this.intervalId = setInterval(() => {
+        this.active = (this.active + 1) % this.images.length
+      }, 3500)
+    },
+    stop() {
+      clearInterval(this.intervalId)
+      this.intervalId = null
+    }
+  }"
+  x-init="start()"
+  @mouseenter="stop()"
+  @mouseleave="start()"
+  class="group relative overflow-hidden rounded-lg shadow-lg h-96 md:h-80 lg:h-96"
+>
+
+  <!-- Rotating images -->
+  <template x-for="(image, index) in images" :key="index">
+    <img
+      :src="image.src"
+      alt=""
+      class="absolute inset-0 w-full h-full object-contain transition-opacity duration-700"
+      :class="active === index ? 'opacity-100' : 'opacity-0'"
+    >
+  </template>
+
+  <!-- Hover overlay -->
+  <div class="absolute inset-0 flex flex-col justify-end p-4 opacity-0 group-hover:opacity-100 bg-black bg-opacity-40 transition-opacity">
+    <h3 class="text-white text-lg font-bold">AGILE project for girls</h3>
+    <p class="text-white text-sm">Guided students in creating crafts like earrings, fostering creativity and hands-on learning - 2025</p>
+  </div>
+
+  <!-- Navigation dots -->
+  <div class="absolute bottom-3 left-0 right-0 flex justify-center gap-2 z-20">
+    <template x-for="(img, i) in images" :key="i">
+      <button
+        class="w-2 h-2 rounded-full bg-white bg-opacity-50 hover:bg-opacity-100"
+        :class="active === i ? 'scale-110 bg-opacity-100' : ''"
+        @click="active = i"
+      ></button>
+    </template>
+  </div>
+</div>
+
             <div class="group relative overflow-hidden rounded-lg shadow-lg">
     <h3 class="text-white text-lg font-bold mb-2 text-center">Behind the Scenes</h3>
     <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@tiktok/video/7545344081493363986" data-video-id="7545344081493363986" style="max-width: 100%;min-width: 325px;">
@@ -171,37 +361,37 @@
 </div>
 
                 <!-- Item 7: Image -->
-                <div class="group relative overflow-hidden rounded-lg shadow-lg">
+                <!-- <div class="group relative overflow-hidden rounded-lg shadow-lg">
                     <img src="https://placehold.co/600x400?text=Work+5" alt="Portfolio Work 5" class="w-full h-64 object-cover transition-transform group-hover:scale-105">
                     <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-end p-4 opacity-0 group-hover:opacity-100 transition-opacity">
                         <h3 class="text-white text-lg font-bold">Work Title 5</h3>
                         <p class="text-white text-sm">Description - Year</p>
                     </div>
-                </div>
+                </div> -->
                 <!-- Item 8: Image -->
-                <div class="group relative overflow-hidden rounded-lg shadow-lg">
+                <!-- <div class="group relative overflow-hidden rounded-lg shadow-lg">
                     <img src="https://placehold.co/600x400?text=Work+6" alt="Portfolio Work 6" class="w-full h-64 object-cover transition-transform group-hover:scale-105">
                     <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-end p-4 opacity-0 group-hover:opacity-100 transition-opacity">
                         <h3 class="text-white text-lg font-bold">Work Title 6</h3>
                         <p class="text-white text-sm">Description - Year</p>
                     </div>
-                </div>
+                </div> -->
                 <!-- Item 9: Image -->
-                <div class="group relative overflow-hidden rounded-lg shadow-lg">
+                <!-- <div class="group relative overflow-hidden rounded-lg shadow-lg">
                     <img src="https://placehold.co/600x400?text=Work+7" alt="Portfolio Work 7" class="w-full h-64 object-cover transition-transform group-hover:scale-105">
                     <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-end p-4 opacity-0 group-hover:opacity-100 transition-opacity">
                         <h3 class="text-white text-lg font-bold">Work Title 7</h3>
                         <p class="text-white text-sm">Description - Year</p>
                     </div>
-                </div>
+                </div> -->
                 <!-- Item 10: Image -->
-                <div class="group relative overflow-hidden rounded-lg shadow-lg">
+                <!-- <div class="group relative overflow-hidden rounded-lg shadow-lg">
                     <img src="https://placehold.co/600x400?text=Work+8" alt="Portfolio Work 8" class="w-full h-64 object-cover transition-transform group-hover:scale-105">
                     <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-end p-4 opacity-0 group-hover:opacity-100 transition-opacity">
                         <h3 class="text-white text-lg font-bold">Work Title 8</h3>
                         <p class="text-white text-sm">Description - Year</p>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </section>

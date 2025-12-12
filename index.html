@@ -157,13 +157,12 @@
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8" x-data="{ active: 0 }">
                 <!-- Featured Item 1 -->
-      <!-- Carousel card (drop this where your first featured item was) -->
-<div
+   <div
   x-data="{
     images: [
       { src: 'asset/paint-sip.jpeg', label: 'Paint & Sip' },
-      { src: 'asset/paint-sip2.jpeg', label: 'Paint & Sip 2' },
-      { src: 'asset/paint-sip3.jpeg', label: 'Paint & Sip 3' }
+      { src: 'asset/paint-sip2.jpeg', label: 'Paint & Sip' },
+      { src: 'asset/paint-sip3.jpeg', label: 'Paint & Sip' }
     ],
     active: 0,
     intervalId: null,
@@ -207,25 +206,120 @@
     </template>
   </div>
 </div>
-
-
                 <!-- Featured Item 2 -->
-                <div class="group relative overflow-hidden rounded-lg shadow-lg cursor-pointer" @mouseover="active = 2" @mouseleave="active = 0">
-                    <img src="https://placehold.co/600x400?text=Family+Event" alt="Family Event Photo" class="w-full h-64 object-cover transition-transform group-hover:scale-105">
-                    <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                        <p class="text-white text-xl font-bold">Family Gathering</p>
-                    </div>
-                </div>
-                <!-- Featured Item 3 -->
-                <div class="group relative overflow-hidden rounded-lg shadow-lg cursor-pointer" @mouseover="active = 3" @mouseleave="active = 0">
-                    <img src="https://placehold.co/600x400?text=Brand+Content" alt="Brand Video" class="w-full h-64 object-cover transition-transform group-hover:scale-105">
-                    <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                        <p class="text-white text-xl font-bold">Brand Promo</p>
-                    </div>
-                </div>
+               <!-- Featured Item 2 (Carousel Version) -->
+<div
+  x-data="{
+    images: [
+      { src: 'asset/Wedding-1.jpg', label: 'Wedding' },
+      { src: 'asset/Wedding-2.jpg', label: 'Wedding' },
+      { src: 'asset/Wedding-3.jpg', label: 'Wedding' },
+      { src: 'asset/Wedding-4.jpg', label: 'Wedding' }
+    ],
+    active: 0,
+    intervalId: null,
+    start() {
+      this.intervalId = setInterval(() => {
+        this.active = (this.active + 1) % this.images.length
+      }, 3500)
+    },
+    stop() {
+      clearInterval(this.intervalId)
+      this.intervalId = null
+    }
+  }"
+  x-init="start()"
+  @mouseenter="stop()"
+  @mouseleave="start()"
+  class="group relative overflow-hidden rounded-lg shadow-lg cursor-pointer h-64"
+>
+
+  <!-- Rotating images -->
+  <template x-for="(image, index) in images" :key="index">
+    <img
+      :src="image.src"
+      alt=""
+      class="absolute inset-0 w-full h-full object-cover transition-opacity duration-700"
+      :class="active === index ? 'opacity-100' : 'opacity-0'"
+    >
+  </template>
+
+  <!-- Hover overlay -->
+  <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center 
+              opacity-0 group-hover:opacity-100 transition-opacity z-10">
+    <p class="text-white text-xl font-bold" x-text="images[active].label"></p>
+  </div>
+
+  <!-- Navigation dots -->
+  <div class="absolute bottom-3 left-0 right-0 flex justify-center gap-2 z-20">
+    <template x-for="(img, i) in images" :key="i">
+      <button
+        class="w-2 h-2 rounded-full bg-white bg-opacity-50 hover:bg-opacity-100"
+        :class="active === i ? 'scale-110 bg-opacity-100' : ''"
+        @click="active = i"
+      ></button>
+    </template>
+  </div>
+</div>
+
+                <!-- Featured Item 3 (Carousel Version) -->
+<div
+  x-data="{
+    images: [
+      { src: 'asset/debate-1.jpg', label: 'School Debate' },
+      { src: 'asset/debate-2.jpg', label: 'School Debate' },
+      { src: 'asset/debate-3.jpg', label: 'School Debate' },
+      { src: 'asset/debate-4.jpg', label: 'School Debate' }
+    ],
+    active: 0,
+    intervalId: null,
+    start() {
+      this.intervalId = setInterval(() => {
+        this.active = (this.active + 1) % this.images.length
+      }, 3500)
+    },
+    stop() {
+      clearInterval(this.intervalId)
+      this.intervalId = null
+    }
+  }"
+  x-init="start()"
+  @mouseenter="stop()"
+  @mouseleave="start()"
+  class="group relative overflow-hidden rounded-lg shadow-lg cursor-pointer h-64"
+>
+
+  <!-- Rotating images -->
+  <template x-for="(image, index) in images" :key="index">
+    <img
+      :src="image.src"
+      alt=""
+      class="absolute inset-0 w-full h-full object-cover transition-opacity duration-700"
+      :class="active === index ? 'opacity-100' : 'opacity-0'"
+    >
+  </template>
+
+  <!-- Hover overlay -->
+  <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center 
+              opacity-0 group-hover:opacity-100 transition-opacity z-10">
+    <p class="text-white text-xl font-bold" x-text="images[active].label"></p>
+  </div>
+
+  <!-- Navigation dots -->
+  <div class="absolute bottom-3 left-0 right-0 flex justify-center gap-2 z-20">
+    <template x-for="(img, i) in images" :key="i">
+      <button
+        class="w-2 h-2 rounded-full bg-white bg-opacity-50 hover:bg-opacity-100"
+        :class="active === i ? 'scale-110 bg-opacity-100' : ''"
+        @click="active = i"
+      ></button>
+    </template>
+  </div>
+</div>
+
             </div>
             <div class="text-center mt-8">
-                <a href="/portfolio.html" class="text-primary font-bold text-lg hover:underline">See More <i data-lucide="arrow-right" class="inline w-4 h-4"></i></a>
+                <a href="portfolio.html" class="text-primary font-bold text-lg hover:underline">See More <i data-lucide="arrow-right" class="inline w-4 h-4"></i></a>
             </div>
         </div>
     </section>
@@ -236,35 +330,38 @@
             <h2 class="text-4xl font-serif text-center mb-12">What Clients Say</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- Testimonial 1 -->
-                <div class="bg-white p-6 rounded-lg shadow-md">
-                    <p class="italic mb-4">"Her video captured our wedding perfectly! Highly recommend."</p>
-                    <div class="flex items-center">
-                        <div>
-                            <p class="font-bold">Sarah & John</p>
-                            <p class="text-sm text-gray-500">Wedding Client</p>
-                        </div>
-                    </div>
-                </div>
+              <div class="bg-white p-6 rounded-lg shadow-md">
+    <p class="italic mb-4">"Jessica was absolutely over the moon with the wedding photos and videos! She couldn't stop talking about them for days."</p>
+    <div class="flex items-center">
+        <div>
+            <p class="font-bold">Jessica</p>
+            <p class="text-sm text-gray-500">Wedding Client</p>
+        </div>
+    </div>
+</div>
+
                 <!-- Testimonial 2 -->
-                <div class="bg-white p-6 rounded-lg shadow-md">
-                    <p class="italic mb-4">"Amazing content for our brand launch. Professional and creative."</p>
-                    <div class="flex items-center">
-                        <div>
-                            <p class="font-bold">BrandX Team</p>
-                            <p class="text-sm text-gray-500">Business Client</p>
-                        </div>
-                    </div>
-                </div>
+              <div class="bg-white p-6 rounded-lg shadow-md">
+    <p class="italic mb-4">"The content for our school debate was phenomenal! The whole school community was thrilled—it was the best we've seen so far."</p>
+    <div class="flex items-center">
+        <div>
+            <p class="font-bold">Mrs. Alonge Margaret</p>
+            <p class="text-sm text-gray-500">School Owner</p>
+        </div>
+    </div>
+</div>
+
                 <!-- Testimonial 3 -->
-                <div class="bg-white p-6 rounded-lg shadow-md">
-                    <p class="italic mb-4">"Captured our family event with such emotion. Thank you!"</p>
-                    <div class="flex items-center">
-                        <div>
-                            <p class="font-bold">The Smith Family</p>
-                            <p class="text-sm text-gray-500">Family Event</p>
-                        </div>
-                    </div>
-                </div>
+           <div class="bg-white p-6 rounded-lg shadow-md">
+    <p class="italic mb-4">"The Paint & Sip event was a huge success! The moments captured were perfect, and I couldn’t be happier with how everything turned out."</p>
+    <div class="flex items-center">
+        <div>
+            <p class="font-bold">Atlas Motel Manager</p>
+            <p class="text-sm text-gray-500">Event Client</p>
+        </div>
+    </div>
+</div>
+
             </div>
         </div>
     </section>
