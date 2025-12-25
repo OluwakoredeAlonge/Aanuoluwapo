@@ -223,10 +223,9 @@
 <div
   x-data="{
     images: [
-      { src: 'asset/Wedding-1.jpg', label: 'Wedding' },
-      { src: 'asset/Wedding-2.jpg', label: 'Wedding' },
-      { src: 'asset/Wedding-3.jpg', label: 'Wedding' },
-      { src: 'asset/Wedding-4.jpg', label: 'Wedding' }
+         { src: 'asset/movie-night1.jpeg', label: ' Movie Night 1' },
+      { src: 'asset/movie-night2.jpeg', label: ' Movie Night 2' },
+      { src: 'asset/movie-night3.jpeg', label: ' Movie Night 3' }
     ],
     active: 0,
     intervalId: null,
@@ -275,7 +274,7 @@
 </div>
 
                 <!-- Featured Item 3 (Carousel Version) -->
-<div
+<!-- <div
   x-data="{
     images: [
       { src: 'asset/debate-1.jpg', label: 'School Debate' },
@@ -301,7 +300,6 @@
   class="group relative overflow-hidden rounded-lg shadow-lg cursor-pointer h-64"
 >
 
-  <!-- Rotating images -->
   <template x-for="(image, index) in images" :key="index">
     <img
       :src="image.src"
@@ -311,13 +309,11 @@
     >
   </template>
 
-  <!-- Hover overlay -->
   <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center 
               opacity-0 group-hover:opacity-100 transition-opacity z-10">
     <p class="text-white text-xl font-bold" x-text="images[active].label"></p>
   </div>
 
-  <!-- Navigation dots -->
   <div class="absolute bottom-3 left-0 right-0 flex justify-center gap-2 z-20">
     <template x-for="(img, i) in images" :key="i">
       <button
@@ -327,7 +323,7 @@
       ></button>
     </template>
   </div>
-</div>
+</div> -->
 
             </div>
             <div class="text-center mt-8">
