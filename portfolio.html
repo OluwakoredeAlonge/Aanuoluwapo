@@ -122,8 +122,8 @@
     images: [
       { src: 'asset/friends-gathering.JPG', label: 'Gathering with friends' },
       { src: 'asset/friends-gathering2.JPG', label: 'Gathering with friends' },
-      { src: 'asset/friends-gathering3.JPG', label: 'Gathering with friends' },
-      { src: 'asset/friends-gathering4.JPG', label: 'Gathering with friends' }
+      <!-- { src: 'asset/friends-gathering3.JPG', label: 'Gathering with friends' }, -->
+      <!-- { src: 'asset/friends-gathering4.JPG', label: 'Gathering with friends' } -->
     ],
     active: 0,
     intervalId: null,
@@ -229,13 +229,13 @@
 </div>
 
                 <!-- Item 3: Video (Placeholder - replace src with actual short video URL) -->
-                <!-- CYON November Deanery Meeting Carousel -->
+           <!--  Movie Night Carousel -->
 <div
   x-data="{
     images: [
-      { src: 'asset/deanery-meeting.JPG', label: 'CYON November Deanery Meeting 1' },
-      { src: 'asset/deanery-meeting2.JPG', label: 'CYON November Deanery Meeting 2' },
-      { src: 'asset/deanery-meeting3.JPG', label: 'CYON November Deanery Meeting 3' }
+      { src: 'asset/movie-night1.jpeg', label: ' Movie Night 1' },
+      { src: 'asset/movie-night2.jpeg', label: ' Movie Night 2' },
+      { src: 'asset/movie-night3.jpeg', label: ' Movie Night 3' }
     ],
     active: 0,
     intervalId: null,
@@ -259,7 +259,7 @@
   <template x-for="(image, index) in images" :key="index">
     <img
       :src="image.src"
-      alt=""
+      :alt="image.label"
       class="absolute inset-0 w-full h-full object-contain transition-opacity duration-700"
       :class="active === index ? 'opacity-100' : 'opacity-0'"
     >
@@ -267,8 +267,10 @@
 
   <!-- Hover overlay -->
   <div class="absolute inset-0 flex flex-col justify-end p-4 opacity-0 group-hover:opacity-100 bg-black bg-opacity-40 transition-opacity">
-    <h3 class="text-white text-lg font-bold">CYON Deanery Meeting</h3>
-<p class="text-white text-sm">Captured the key moments and highlights of the CYON Deanery Meeting held in November at Ado Ekiti - 2025</p>
+    <h3 class="text-white text-lg font-bold"> Movie Night</h3>
+    <p class="text-white text-sm">
+      An evening of films, fun, and fellowship as members gathered to relax, connect, and enjoy Movie Night together.
+    </p>
   </div>
 
   <!-- Navigation dots -->
@@ -282,6 +284,7 @@
     </template>
   </div>
 </div>
+
 
                 <!-- Item 4: Image -->
                 <!-- Racheal Volunteer Event Carousel -->
@@ -359,40 +362,7 @@
     </blockquote>
     <script async src="https://www.tiktok.com/embed.js"></script>
 </div>
-
-                <!-- Item 7: Image -->
-                <!-- <div class="group relative overflow-hidden rounded-lg shadow-lg">
-                    <img src="https://placehold.co/600x400?text=Work+5" alt="Portfolio Work 5" class="w-full h-64 object-cover transition-transform group-hover:scale-105">
-                    <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-end p-4 opacity-0 group-hover:opacity-100 transition-opacity">
-                        <h3 class="text-white text-lg font-bold">Work Title 5</h3>
-                        <p class="text-white text-sm">Description - Year</p>
-                    </div>
-                </div> -->
-                <!-- Item 8: Image -->
-                <!-- <div class="group relative overflow-hidden rounded-lg shadow-lg">
-                    <img src="https://placehold.co/600x400?text=Work+6" alt="Portfolio Work 6" class="w-full h-64 object-cover transition-transform group-hover:scale-105">
-                    <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-end p-4 opacity-0 group-hover:opacity-100 transition-opacity">
-                        <h3 class="text-white text-lg font-bold">Work Title 6</h3>
-                        <p class="text-white text-sm">Description - Year</p>
-                    </div>
-                </div> -->
-                <!-- Item 9: Image -->
-                <!-- <div class="group relative overflow-hidden rounded-lg shadow-lg">
-                    <img src="https://placehold.co/600x400?text=Work+7" alt="Portfolio Work 7" class="w-full h-64 object-cover transition-transform group-hover:scale-105">
-                    <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-end p-4 opacity-0 group-hover:opacity-100 transition-opacity">
-                        <h3 class="text-white text-lg font-bold">Work Title 7</h3>
-                        <p class="text-white text-sm">Description - Year</p>
-                    </div>
-                </div> -->
-                <!-- Item 10: Image -->
-                <!-- <div class="group relative overflow-hidden rounded-lg shadow-lg">
-                    <img src="https://placehold.co/600x400?text=Work+8" alt="Portfolio Work 8" class="w-full h-64 object-cover transition-transform group-hover:scale-105">
-                    <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-end p-4 opacity-0 group-hover:opacity-100 transition-opacity">
-                        <h3 class="text-white text-lg font-bold">Work Title 8</h3>
-                        <p class="text-white text-sm">Description - Year</p>
-                    </div>
-                </div> -->
-            </div>
+ </div>
         </div>
     </section>
 
